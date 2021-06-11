@@ -1,0 +1,16 @@
+name: Test and Deploy to the Dev
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    name: run all tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: docker-compose run dckrdjnggthb python manage.py test
